@@ -1,0 +1,24 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - '0.0.0.0:3000:3000'  # Puertos de la aplicación NestJS
+    volumes:
+      - ./src:/app/src  # Mapeo de volúmenes para desarrollo (opcional)
+    environment:
+      MONGO_DB_URL: 'mongodb://mongo:27017/mydatabase'  # URL de conexión a MongoDB
+    depends_on:
+      - mongo
+
+  mongo:
+    image: mongo:latest
+    ports:
+      - '27017:27017'  # Puerto de MongoDB
+    volumes:
+      - mongodb_data:/data/db  # Persistencia de datos de MongoDB
+
+volumes:
+  mongodb_data:  # Volumen para persistencia de datos de MongoDB

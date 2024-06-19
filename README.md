@@ -58,6 +58,41 @@ $ npm run test:e2e
 $ npm run test:cov
 ```
 
+Instalación y Uso
+Paso 1: Clonar el Repositorio
+bash
+Copiar código
+git clone https://github.com/DavianAscanio97/expert-group-backend
+cd tu-proyecto-nest
+Paso 2: Configuración del Entorno
+Antes de comenzar, configura tus variables de entorno si es necesario.
+
+bash
+cp .env.example .env
+# Editar .env según sea necesario
+Paso 3: Construir y Ejecutar con Docker Compose
+Construye y ejecuta el proyecto utilizando Docker Compose.
+
+bash
+docker-compose up --build
+Esto construirá la imagen Docker y ejecutará el contenedor de NestJS junto con la base de datos MongoDB (si es parte de tu proyecto).
+
+Paso 4: Verificar Estado de los Contenedores
+Verifica que los contenedores estén ejecutándose correctamente.
+
+bash
+docker ps
+Paso 5: Acceder al Servicio de NestJS
+Abre tu navegador y visita la siguiente URL para acceder al servicio de NestJS:
+
+http://localhost:3000
+Paso 6: Detener y Limpiar
+Cuando hayas terminado de trabajar, detén y elimina los contenedores.
+
+bash
+Copiar código
+docker-compose down
+
 ## Support
 
 Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
