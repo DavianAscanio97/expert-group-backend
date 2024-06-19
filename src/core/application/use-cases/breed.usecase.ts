@@ -18,4 +18,14 @@ export class BreedUseCase {
         return responseSuccess('Información del gato', response )
     }
 
+    async getBreedBySearch(search: string): Promise<any> {
+        const response = await this.breedService.getBreedBySearch(search)
+        return responseSuccess('Información del gato', response)
+    }
+
+    async getBreedByImages(image: string): Promise<any> {
+        const response = await this.breedService.getBreedByImages(image)
+        return responseSuccess('Imagenes del gato', response)
+    }
+
 }

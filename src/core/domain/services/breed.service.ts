@@ -18,4 +18,12 @@ export class BreedService {
         return this.breedsOutputPort.getBreedById(id)
     }
 
+    getBreedBySearch(search: string): Promise<any> {
+        return this.breedsOutputPort.getBreedBySearch(search)
+    }
+
+    getBreedByImages(image: string): Promise<any> {
+        return this.breedsOutputPort.getBreedByImages(image)
+    }
+
 }

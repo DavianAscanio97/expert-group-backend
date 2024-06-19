@@ -21,4 +21,19 @@ export class BreedController implements BreedInputPort {
     getBreedById(@Param('breed_id') id: string): Promise<any> {
         return this.breedUseCase.getBreedById(id)
     }
+
+
+    @Get('/search/:search')
+    @UseGuards(AuthJwtGuard)
+    getBreedBySearch(@Param('search') search: string): Promise<any> {
+        return this.breedUseCase.getBreedBySearch(search)
+    }
+
+
+    @Get('/images/:search')
+    @UseGuards(AuthJwtGuard)
+    getBreedByImages(@Param('search') search: string): Promise<any> {
+        return this.breedUseCase.getBreedByImages(search)
+    }
+
 }

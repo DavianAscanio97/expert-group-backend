@@ -15,4 +15,12 @@ export class BreedsRepository implements BreedsOutputPort {
         return await this._breedService.getBreedById(id).then((data) => data)
     }
 
+    async getBreedBySearch(search: string): Promise<any> {
+        return await this._breedService.getBreedBySearch(search).then((data) => data)
+    }
+
+    async getBreedByImages(image: string): Promise<any> {
+        return await this._breedService.getBreedByImages(image).then((data) => data)
+    }
+
 }
