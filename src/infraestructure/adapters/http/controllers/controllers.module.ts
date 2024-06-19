@@ -3,6 +3,7 @@ import { ConfigEnvModule } from '../../config/config.module';
 import { DatabaseMongoModule } from '../../mongodb/database-mongo.module';
 import { UserController } from './user.controller';
 import { AuthController } from './auth.controller';
+import { BreedController } from './breed.controller';
 
 @Global()
 @Module({
@@ -10,7 +11,7 @@ import { AuthController } from './auth.controller';
         ConfigEnvModule,
         DatabaseMongoModule,
     ],
-    controllers: [UserController, AuthController],
+    controllers: [UserController, AuthController, BreedController],
     providers: [],
     exports: [], 
 })

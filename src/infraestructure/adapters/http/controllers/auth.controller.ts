@@ -18,7 +18,7 @@ export class AuthController implements AuthInputPort {
         description: 'Iniciar sesión',
         type: SwaggerResponse,
     })
-    @Post('sign-in')
+    @Post('login')
     async signIn(@Body() singInDto: SingInDto, @Req() req): Promise<Response> {
         return this.authUseCase.signIn(singInDto, req)
     }
@@ -27,7 +27,7 @@ export class AuthController implements AuthInputPort {
         description: 'Cerrar sesión',
         type: SwaggerResponse,
     })
-    @Get('sign-up')
+    @Get('logout')
     @UseGuards(AuthJwtGuard)
     async signUp(@Req() req: any): Promise<Response> {
         const token = req.headers['authorization']

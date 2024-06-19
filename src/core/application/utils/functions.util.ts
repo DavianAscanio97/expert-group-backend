@@ -1,6 +1,4 @@
 import * as bcrypt from 'bcrypt'
-import { v4 as uuidv4 } from 'uuid'
-import * as crypto from 'crypto'
 
 export const normalizeDatetimeFunction = (value: Date): string => {
     const dateString = value.toISOString()
@@ -30,9 +28,4 @@ export const comparePasswords = (
     hashedPassword: string
 ): Promise<boolean> => {
     return bcrypt.compare(plainTextPassword, hashedPassword)
-}
-
-export const generateUid = (text: string) => {
-    const hashed = crypto.createHash('md5').update(text).digest('hex')
-    return uuidv4() + '-' + hashed.substring(0, 6)
 }

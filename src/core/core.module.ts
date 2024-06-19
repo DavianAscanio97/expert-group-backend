@@ -1,6 +1,6 @@
 // src/core/core.module.ts
 import { Module } from '@nestjs/common';
-import { AdaptersModule, JWT_TOKEN_REPOSITORY } from 'src/infraestructure/adapters/adapters.module';
+import { AdaptersModule, BREED_REPOSITORY, JWT_TOKEN_REPOSITORY } from 'src/infraestructure/adapters/adapters.module';
 import { UserService } from './domain/services/user.service';
 import { UserUseCase } from './application/use-cases/user.usecase';
 import { UsersMapper } from './application/mappers/users.mapper';
@@ -9,6 +9,8 @@ import { TOKEN_MODEL, USER_MODEL } from 'src/infraestructure/shared/constants';
 import { AuthUseCase } from './application/use-cases/auth.usecase';
 import { AuthService } from './domain/services/auth.service';
 import { JwtService } from '@nestjs/jwt';
+import { BreedUseCase } from './application/use-cases/breed.usecase';
+import { BreedService } from './domain/services/breed.service';
 
 const PROVIDERS = [
     JwtService,
@@ -16,7 +18,9 @@ const PROVIDERS = [
     UserUseCase,
     UsersMapper,
     AuthUseCase,
-    AuthService
+    AuthService,
+    BreedUseCase,
+    BreedService
 ];
 
 @Module({
@@ -35,6 +39,11 @@ const PROVIDERS = [
             provide: AuthService,
             useFactory: (jWTTokenOutputPort, authRepository) => new AuthService(jWTTokenOutputPort, authRepository),
             inject: [JWT_TOKEN_REPOSITORY, TOKEN_MODEL],
+        },
+        {
+            provide: BreedService,
+            useFactory: (breedsOutputPort) => new BreedService(breedsOutputPort),
+            inject: [BREED_REPOSITORY],
         }
     ],
     exports: [...PROVIDERS],
