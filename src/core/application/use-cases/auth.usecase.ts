@@ -28,8 +28,7 @@ export class AuthUseCase {
      */
     async signIn(singInDto: SingInDto, req: any): Promise<Response> {
         const email =  singInDto.email
-        const user = await this.userService.findOneByWhere({ email });
-
+        const user = await this.userService.findOneByWhere({ email: email });
         if (!user) {
             throw new CustomException(
                 'El correo electrónico y/o la contraseña no son válidos',

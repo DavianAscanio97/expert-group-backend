@@ -31,7 +31,6 @@ export class User extends DocumentMongoose {
     @Prop({
         type: String,
         required: true,
-        unique: true,
         maxlength: 200,
         comment: 'Correo del usuario',
     })

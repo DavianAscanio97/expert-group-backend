@@ -18,11 +18,11 @@ export class SchemaRepository<T extends Document & IEntity, CreateDto, UpdateDto
     }
 
     async findOne(filter: any): Promise<T | null> {
-        return await this._model.findOne(filter).exec();
+        return await this._model.findOne({ ...filter, deletedAt: { $exists: false } }).exec();
     }
 
     async exists(filter: any): Promise<boolean> {
-        const count = await this._model.countDocuments(filter).exec();
+        const count = await this._model.countDocuments({ ...filter, deletedAt: { $exists: false } } ).exec();
         return count > 0;
     }
 
@@ -42,7 +42,7 @@ export class SchemaRepository<T extends Document & IEntity, CreateDto, UpdateDto
     }
 
     async findByWhere(where: FilterQuery<T>): Promise<T[]> {
-        return await this._model.find(where).exec();
+        return await this._model.find({ where, deletedAt: { $exists: false } }).exec();
     }
 
     async updateAndWhere(criteria: FilterQuery<T>, model: UpdateQuery<T>): Promise<UpdateWriteOpResult> {
@@ -50,6 +50,6 @@ export class SchemaRepository<T extends Document & IEntity, CreateDto, UpdateDto
     }
 
     async findOneByWhere(where: FilterQuery<T>): Promise<T | null> {
-        return await this._model.findOne(where).exec();
+        return await this._model.findOne({ ...where, deletedAt: { $exists: false } }).exec();
     }
 }
