@@ -9,7 +9,7 @@ services:
     volumes:
       - ./src:/app/src  # Mapeo de volúmenes para desarrollo (opcional)
     environment:
-      MONGO_DB_URL: 'mongodb://mongo:27017/mydatabase'  # URL de conexión a MongoDB
+      MONGO_DB_URL: 'mongodb+srv://admin:xeXbJaXMekXcRWfe@cluster0.6c2y6co.mongodb.net/'  # URL de conexión a MongoDB
     depends_on:
       - mongo
 
