@@ -27,7 +27,7 @@ export class UserService {
     }
 
     async findOneByWhere(where: Partial<User>): Promise<User> {
-        return this.userOutputPort.findOneByWhere({where})
+        return this.userOutputPort.findOneByWhere(where.$where)
     }
 
     async delete(id: Types.ObjectId): Promise<any> {
@@ -39,10 +39,6 @@ export class UserService {
         limit?: number
     }): Promise<User[]> {
         return this.userOutputPort.findAll()
-    }
-
-    async findByWhere(where: Partial<User>): Promise<User[]> {
-        return 
     }
 
     async findByExists(where: Partial<User>): Promise<boolean> {

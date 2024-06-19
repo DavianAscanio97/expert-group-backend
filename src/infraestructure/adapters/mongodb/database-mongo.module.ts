@@ -1,9 +1,8 @@
 // src/infraestructure/adapters/mongodb/database-mongo.module.ts
 import { Module } from '@nestjs/common';
 import { MongooseModule } from '@nestjs/mongoose';
-import { UserSchema } from './schemas/user.schema';
 import { DatabaseMongoService } from './database-mongo.service';
-import { USER_MODEL } from '../../shared/constants';
+import { TOKEN_MODEL, USER_MODEL } from '../../shared/constants';
 import { MongoDBProviders } from './mongodb.providers';
 
 @Module({
@@ -19,6 +18,6 @@ import { MongoDBProviders } from './mongodb.providers';
     DatabaseMongoService,
     ...MongoDBProviders,
   ],
-  exports: [MongooseModule, USER_MODEL],
+  exports: [MongooseModule, USER_MODEL, TOKEN_MODEL],
 })
 export class DatabaseMongoModule { }
