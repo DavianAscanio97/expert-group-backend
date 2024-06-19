@@ -7,6 +7,7 @@ import { Observable } from 'rxjs';
 @Injectable()
 export class BreedApi {
    private readonly catApiUrl = ENV.BREEDS_API;
+   private readonly apiKey = ENV.BREEDS_API_KEY
 
    constructor(private readonly httpService: HttpService) { }
 
@@ -14,6 +15,9 @@ export class BreedApi {
       const options = {
          method: 'GET',
          url: `${this.catApiUrl}/breeds`,
+         headers: {
+            'x-api-key': this.apiKey
+         }
       };
       return axios.request(options).then(function (response) {
          return response.data
@@ -26,6 +30,9 @@ export class BreedApi {
       const options = {
          method: 'GET',
          url: `${this.catApiUrl}/images/search?breed_ids=${id}`,
+         headers: {
+            'x-api-key': this.apiKey
+         }
       };
       return axios.request(options).then(function (response) {
          return response.data
